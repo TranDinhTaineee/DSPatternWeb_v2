@@ -5,11 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebBanHangOnline.DesignPatterns.CreationalPatterns.Prototype;
 
 namespace WebBanHangOnline.Models.EF
 {
     [Table("tb_Product")]
-    public class Product : CommonAbstract
+    public class Product : CommonAbstract, ProductPrototype
     {
         public Product()
         {
@@ -57,5 +58,36 @@ namespace WebBanHangOnline.Models.EF
         public virtual ProductCategory ProductCategory { get; set; }
         public virtual ICollection<ProductImage> ProductImage { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+
+        public ProductPrototype Clone()
+        {
+            Product newProduct = new Product();
+            newProduct.Title = Title;
+            newProduct.ProductCode = ProductCode;
+            newProduct.Description = Description;
+            newProduct.Detail = Detail;
+            newProduct.Image = Image;
+            newProduct.Price = Price;
+            newProduct.PriceSale = PriceSale;
+            newProduct.Quantity = Quantity;
+            newProduct.IsHome = IsHome;
+            newProduct.IsSale = IsSale;
+            newProduct.IsFeature = IsFeature;
+            newProduct.IsHot = IsHot;
+            newProduct.ProductCategoryId = ProductCategoryId;
+            newProduct.SeoTitle = SeoTitle;
+            newProduct.SeoDescription = SeoDescription;
+            newProduct.SeoKeywords = SeoKeywords;
+            newProduct.CreatedBy = CreatedBy;
+            newProduct.CreatedDate = CreatedDate;
+            newProduct.ModifiedDate = ModifiedDate;
+            newProduct.Modifiedby = Modifiedby;
+            newProduct.Alias = Alias;
+            newProduct.IsActive = IsActive;
+            newProduct.ViewCount = ViewCount;
+            newProduct.OriginalPrice = OriginalPrice;
+
+            return newProduct;
+        }
     }
 }

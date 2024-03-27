@@ -75,9 +75,9 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -212,6 +212,7 @@
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="DesignPatterns\CreationalPatterns\Prototype\ProductPrototype.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -3490,6 +3491,7 @@
     <Content Include="Content\assets\plugins\moment\locales.min.js.map" />
     <Content Include="Content\assets\plugins\moment\moment-with-locales.min.js.map" />
     <Content Include="Content\assets\plugins\moment\moment.min.js.map" />
+    <Content Include="Areas\Admin\Views\Products\Duplicate.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3572,6 +3574,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Content\ckfinder\userfiles\" />
+    <Folder Include="DesignPatterns\BehavioralPatterns\" />
+    <Folder Include="DesignPatterns\StructuralPatterns\" />
     <Folder Include="Uploads\files\" />
     <Folder Include="Uploads\flash\" />
   </ItemGroup>

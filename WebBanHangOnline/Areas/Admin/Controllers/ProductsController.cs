@@ -172,5 +172,35 @@ namespace WebBanHangOnline.Areas.Admin.Controllers
 
             return Json(new { success = false });
         }
+        public ActionResult Duplicate(int id)
+        {
+            ViewBag.ProductCategory = new SelectList(db.ProductCategories.ToList(), "Id", "Title");
+            var item = db.Products.Find(id);
+            return View(item);
+        }
+        [HttpPost]
+        public ActionResult Duplicate(Product model, int id)
+        {
+            Product product = db.Products.Find(id);
+            if (product != null)
+            {
+                var productImages = db.ProductImages
+                              .Where(p => p.ProductId == id)
+                              .ToList();
+
+                model = (Product)product.Clone();
+                db.Products.Add(model);
+                db.SaveChanges();
+
+                foreach (var productImage in productImages)
+                {
+                    db.ProductImages.Add(new ProductImage() { ProductId = model.Id, Image = productImage.Image, IsDefault = productImage.IsDefault });
+                }
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
     }
 }
